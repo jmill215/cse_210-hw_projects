@@ -11,13 +11,7 @@ public class Reference
 
     private int _endVerse;
 
-    //Placing this here in case it needs to mirror the fraction assignment
-    public Reference(){
-        _book = "";
-        _chapter = 0;
-        _verse = 0;
-        _endVerse = 0;
-    }
+    //first empty reference (if mirroring fraction.cs in paradigm) is not needed due to needing members
     public Reference(string book, int chapter ,int verse){
         _book = book;
         _chapter = chapter;
@@ -32,6 +26,16 @@ public class Reference
     }
 
     public string GetDisplayText(){
-        Console.WriteLine()
+        //How do we check if the first or second reference gets used?
+        //Do we check to make sure the endverse = 0 or null? Likely.
+
+        //First Reference Check
+        if (_endVerse == 0) {
+            return($"{_book} {_chapter}:{_verse}");
+        } else {
+            //Second is checked by way of else
+            return($"{_book} {_chapter}:{_verse}-{_endVerse}");
+        }
+
     }
 }
