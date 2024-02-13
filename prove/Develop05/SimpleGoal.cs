@@ -1,12 +1,13 @@
 using System;
+using System.ComponentModel;
 
 public class SimpleGoal : Goal
 {
-    private bool _isComplete;
+    protected bool _isComplete = false;
 
-    public class SimpleGoal(string name, string description, string points)
+    public SimpleGoal(string name, string description, int points) : base(name, description, points)
     {
-
+        
     }
 
     public override void RecordEvent()
@@ -16,11 +17,11 @@ public class SimpleGoal : Goal
 
     public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        return _isComplete;
     }
 
     public override string GetStringRepresentation()
     {
-        throw new NotImplementedException();
+        return $"Simple Goal: {_shortName}, {_description}, {_points}";
     }
 }

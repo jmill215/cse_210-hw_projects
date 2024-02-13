@@ -1,9 +1,10 @@
 using System;
+using System.ComponentModel;
 
 public class EternalGoal : Goal
 {
 
-    public class EternalGoal()
+    public EternalGoal(string name, string description, int points) : base(name, description, points)
     {
 
     }
@@ -15,11 +16,11 @@ public class EternalGoal : Goal
 
     public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        return false;
     }
 
     public override string GetStringRepresentation()
     {
-        throw new NotImplementedException();
+        return $"Eternal Goal: {_shortName}~ {_description}~ {_points}";
     }
 }

@@ -1,35 +1,50 @@
 using System;
 
-public class Goal
+public abstract class Goal
 {
-    private string _shortName;
+    protected string _shortName;
 
-    private string _description;
+    protected string _description;
 
-    private string _points;
+    protected int _points;
+
+    public Goal()
+    {
+
+    }
 
     public Goal(string name, string description, string points)
     {
-
+        _shortName = name;
+        _description = description;
+        _points = points;
     }
 
-    public abstract void RecordEvent()
+
+    public abstract void RecordEvent();
+
+    public abstract bool IsComplete();
+
+    public string GetDetailsString()
     {
-        
+        return "";
     }
 
-    public abstract bool IsComplete()
-    {
+    public abstract string GetStringRepresentation();
 
+    //using a getter for goal name, desc, points
+    public string getGoalName()
+    {
+        return _shortName;
     }
 
-    public abstract string GetDetailsString()
+    public string getDescription()
     {
-
+        return _description;
     }
 
-    public abstract string GetStringRepresentation()
+    public string getPoints()
     {
-
+        return _points;
     }
 }

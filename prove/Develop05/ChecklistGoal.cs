@@ -2,15 +2,17 @@ using System;
 
 public class CheckListGoal : Goal
 {
-    private int _amountCompleted;
+    protected int _amountCompleted = 0;
 
-    private int _target;
+    protected int _target;
 
-    private int _bonus;
+    protected int _bonus;
 
-    public CheckListGoal(string name, string description, string points, int target, int bonus)
+
+    public CheckListGoal(string name, string description, int points, int target, int bonus) : base(name, description, points)
     {
-
+        _target = target;
+        _bonus = bonus;
     }
 
 
@@ -21,18 +23,18 @@ public class CheckListGoal : Goal
 
     public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        return false;
     }
 
     public override string GetDetailsString()
     {
-        throw new NotImplementedException();
+        return $"[ ] {_shortName}";
     }
 
 
     public override string GetStringRepresentation()
     {
-        throw new NotImplementedException();
+        return $"Simple Goal: {_shortName}~ {_description}~ {_points}~ {_target}~ {_bonus}";
     }
 
 }
