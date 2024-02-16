@@ -35,6 +35,11 @@ public class CheckListGoal : Goal
     public override string GetStringRepresentation()
     {
         return $"Simple Goal: {_shortName}~ {_description}~ {_points}~ {_target}~ {_bonus}";
+        if(IsComplete()) {
+            return $"Simple Goal:~[X]~ {_shortName},~ {_description},~ {_points}";
+        } else {
+            return $"Simple Goal:~[ ]~ {_shortName},~ {_description},~ {_points}";
+        }
     }
 
 }

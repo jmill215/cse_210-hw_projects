@@ -8,12 +8,7 @@ public abstract class Goal
 
     protected int _points;
 
-    public Goal()
-    {
-
-    }
-
-    public Goal(string name, string description, string points)
+    public Goal(string name, string description, int points)
     {
         _shortName = name;
         _description = description;
@@ -25,9 +20,10 @@ public abstract class Goal
 
     public abstract bool IsComplete();
 
-    public string GetDetailsString()
+    public virtual string GetDetailsString()
     {
-        return "";
+        //because Eternal Goal is without getDetails, setting it as default here
+        return $"Eternal Goal~{_shortName}~{_description}~{_points}";
     }
 
     public abstract string GetStringRepresentation();
@@ -43,7 +39,7 @@ public abstract class Goal
         return _description;
     }
 
-    public string getPoints()
+    public int getPoints()
     {
         return _points;
     }

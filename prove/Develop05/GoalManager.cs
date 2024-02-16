@@ -6,7 +6,7 @@ public class GoalManager
 
     protected List<Goal> _goals = new List<Goal>();
 
-    private string _score;
+    private int _score;
 
     //call class to initialize the score
     public GoalManager()
@@ -109,9 +109,9 @@ public class GoalManager
         Console.Write("/nWhat is a short description of it? ");
         string goalDesc = Console.ReadLine();
         Console.Write("What is the amount of points associated with this goal?");
-        string goalPoints = Console.ReadLine();
+        int goalPoints = int.Parse(Console.ReadLine());
 
-        Goal newGoal;
+        
         if (userInp == 3)
         {
             Console.Write("\nHow many times does this goal need to be accomplished to obtain bonus points? ");
@@ -119,16 +119,16 @@ public class GoalManager
 
             Console.Write($"What is the bonus for accomplishing it {goalTargetAttempts} times? ");
             int goalBonus = int.Parse(Console.ReadLine());
-            newGoal = new CheckListGoal(goalName, goalDesc, goalPoints, goalTargetAttempts, goalBonus);
-            _goals.Add(newGoal);
+            CheckListGoal checkGoal = new CheckListGoal(goalName, goalDesc, goalPoints, goalTargetAttempts, goalBonus);
+            _goals.Add(checkGoal);
         } else if(userInp == 2)
         {
-            newGoal = new EternalGoal(goalName, goalDesc, goalPoints);
-            _goals.Add(newGoal);
+            EternalGoal etGoal = new EternalGoal(goalName, goalDesc, goalPoints);
+            _goals.Add(etGoal);
         } else if(userInp == 1)
         {
-            newGoal = new SimpleGoal(goalName, goalDesc, goalPoints);
-            _goals.Add(newGoal);
+            SimpleGoal simGoal = new SimpleGoal(goalName, goalDesc, goalPoints);
+            _goals.Add(simGoal);
         }
         
     }
@@ -141,13 +141,15 @@ public class GoalManager
         {
             Console.WriteLine("There are no goals in the list. Please create a goal first before recording an event");
             return;
-        }
-        ListGoalNames();
-        Console.Write("\nWhich goal did you accomplish? ");
-        string x = Console.ReadLine();
-        int i = int.Parse(x) - 1; //matching indexes, hence -1
+        } else {
+            ListGoalNames();
+            Console.Write("\nWhich goal did you accomplish? ");
+            string x = Console.ReadLine();
+            int i = int.Parse(x) - 1; //matching indexes, hence -1
 
-        _score += _goals[i].RecordEvent();
+            _score += _goals[i].RecordEvent();
+        }
+        
     }
 
     public void SaveGoals()

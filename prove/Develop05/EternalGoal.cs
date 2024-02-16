@@ -21,6 +21,10 @@ public class EternalGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        return $"Eternal Goal: {_shortName}~ {_description}~ {_points}";
+        if(IsComplete()) {
+            return $"Eternal Goal:~[X]~{_shortName},~{_description},~{_points}";
+        } else {
+            return $"Eternal Goal:~[ ]~{_shortName},~{_description},~{_points}";
+        }
     }
 }
